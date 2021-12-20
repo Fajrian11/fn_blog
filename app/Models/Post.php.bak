@@ -1,0 +1,42 @@
+<?php
+
+namespace App\Models;
+
+class Post
+{
+    private static $blog_posts = [
+        [
+            "title" => "Judul Pertama Post",
+            "slug" => "judul-pertama-post",
+            "author" => "Fajrian Nugraha",
+            "body" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas velit hic facilis laboriosam
+            accusantium et asperiores enim magni! At fugit hic dolores? Provident
+            magnam ducimus molestiae laborum tenetur laboriosam voluptatem?"
+        ],
+        [
+            "title" => "Judul Kedua Post",
+            "slug" => "judul-kedua-post",
+            "author" => "Jajang Aron",
+            "body" => "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptas velit hic facilis laboriosam
+            accusantium et asperiores enim magni! At fugit hic dolores? Provident magnam ducimus molestiae laborum
+            tenetur laboriosam voluptatem? bacot kau sini baku hantam kau ku tumbuk nanti ya awas kau"
+        ],
+    ];
+
+    public static function all(){
+        return collect(self::$blog_posts);
+    }
+
+    public static function find($slug){
+
+        $posts = static::all();
+        // $post = [];
+        // foreach($posts as $p){
+        //     if($p["slug"] == $slug){
+        //         $post = $p;
+        //     }
+        // }
+
+        return $posts->firstwhere('slug',$slug);
+    }
+}
